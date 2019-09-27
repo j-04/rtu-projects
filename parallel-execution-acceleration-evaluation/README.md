@@ -1,0 +1,1 @@
+This simple program evaluates parallel execution acceleration by using Amdahl's, Gustafson – Barsis's and Sana-Naya's laws.
