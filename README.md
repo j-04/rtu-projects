@@ -1,2 +1,2 @@
-# rtu-programs
-RTU programs
+# rtu-projects
+RTU projects
