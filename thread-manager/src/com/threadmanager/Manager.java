@@ -10,13 +10,12 @@ public class Manager {
     private Process[] processes = new Process[SIZE];
     private boolean exitFlag = false;
     private ExecutorService executors = null;
-    private boolean shutdownFlag = false;
 
     public Manager() {
 
     }
 
-    public void start() throws InterruptedException {
+    public void start() {
         printInterface();
         do {
             int code = readCode();
@@ -80,7 +79,7 @@ public class Manager {
         executors = Executors.newFixedThreadPool(SIZE);
     }
 
-    private void runAllThreads() throws InterruptedException {
+    private void runAllThreads() {
         prepareThreads();
         executors.execute(processes[0]);
         executors.execute(processes[1]);
@@ -90,14 +89,6 @@ public class Manager {
         executors.shutdown();
         do {
         } while (!executors.isTerminated());
-    }
-
-    private boolean checkThreadsForProcess() {
-        for (Process process: processes) {
-            if (!process.isInterrupted())
-                return true;
-        }
-        return false;
     }
 
     private void switchExitFlag() {
