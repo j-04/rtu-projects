@@ -16,12 +16,12 @@ public class Process extends Thread {
         int step = 1;
         int i = 0;
         try {
-            do {
+            while (i < seconds) {
                 printProgress();
                 i += step;
                 counter += step;
                 sleep(1000);
-            } while (i <= seconds);
+            }
             sleep(250);
         } catch (InterruptedException e) {
             e.printStackTrace();

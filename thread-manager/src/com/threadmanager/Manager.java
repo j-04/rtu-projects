@@ -10,6 +10,7 @@ public class Manager {
     private Process[] processes = new Process[SIZE];
     private boolean exitFlag = false;
     private ExecutorService executors = null;
+    private boolean repeat = false;
 
     public Manager() {
 
@@ -21,6 +22,7 @@ public class Manager {
             int code = readCode();
             switch (code) {
                 case 1: {
+                    repeat = true;
                     printInterface();
                     continue;
                 }
@@ -29,10 +31,18 @@ public class Manager {
                     break;
                 }
                 case 3: {
+                    if (!repeat) {
+                        System.err.println("Невозомжно повторно запустить потоки. Потоки не готовы к использованию.");
+                        continue;
+                    }
                     runAllThreads();
                     break;
                 }
                 case 4: {
+                    if (!repeat) {
+                        System.err.println("Невозомжно повторно запустить потоки. Потоки не готовы к использованию.");
+                        continue;
+                    }
                     runAllThreads();
                     switchExitFlag();
                     break;
